@@ -2,17 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Git') {
             steps {
-                echo 'Compilation du projet...'
-                sh 'mvn clean install'
+                git branch: 'main', url: 'https://github.com/EyaDahen/Student-Management.git'
             }
         }
-        stage('Tests') {
-            steps {
-                echo 'Exécution des tests unitaires...'
-                sh 'mvn test'
-            }
-        }
+       
     }
 }
