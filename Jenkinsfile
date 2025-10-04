@@ -15,28 +15,12 @@ pipeline {
             }
         }
 
-            stage('Build') {
+        stage('Build') {
             steps {
-                echo 'Building the application...'
-                script {
-                    if (isUnix()) {
-                        sh '''
-                            echo "Setting execute permissions for Maven wrapper..."
-                            chmod +x mvnw
-                            echo "Building with Maven wrapper..."
-                            if ./mvnw clean compile; then
-                                echo "Build successful with Maven wrapper"
-                            else
-                                echo "Maven wrapper failed, trying system Maven..."
-                                mvn clean compile
-                            fi
-                        '''
-                    } else {
-                        bat '.\\mvnw.cmd clean compile'
-                    }
-                }
+                sh 'mvn -B -DskipTests clean package'    
             }
         }
-       
+
+                 
     }
 }
