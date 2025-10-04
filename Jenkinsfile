@@ -4,9 +4,7 @@ pipeline {
         maven 'Maven'  
         jdk 'JDK'
     }
-    environment {
-        M2_HOME = '-Dmaven.repo.local=.m2/repository' // Use a local Maven repository in the workspace
-    }
+   
 
     stages {
         stage('Git') {
