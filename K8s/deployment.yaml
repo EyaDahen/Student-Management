@@ -15,7 +15,8 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: eyadahen/student-app:latest
+          image: eyadahen/student-app:latest   # ✅ bon nom d’image
+          imagePullPolicy: Never               # ✅ ajoute cette ligne
           ports:
             - containerPort: 8089
           env:
