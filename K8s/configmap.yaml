@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-config
+  namespace: devops
+data:
+  SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/studentdb?createDatabaseIfNotExist=true"

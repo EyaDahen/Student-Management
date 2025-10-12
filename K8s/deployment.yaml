@@ -15,14 +15,11 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: eyadahen/student-app:latest   # ✅ bon nom d’image
-          imagePullPolicy: Never               # ✅ ajoute cette ligne
+          image: eyadahen/student-app:latest
           ports:
             - containerPort: 8089
-          env:
-            - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://mysql:3306/studentdb?createDatabaseIfNotExist=true
-            - name: SPRING_DATASOURCE_USERNAME
-              value: root
-            - name: SPRING_DATASOURCE_PASSWORD
-              value: root
+          envFrom:
+            - configMapRef:
+                name: spring-config
+            - secretRef:
+                name: spring-secret
